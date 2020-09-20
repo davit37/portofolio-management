@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset("/assets/vendors/mdi/css/materialdesignicons.min.css")}}">
@@ -13,11 +14,20 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="{{asset("/assets/vendors/jquery-bar-rating/css-stars.css" )}}"/>
     <link rel="stylesheet" href="{{asset("/assets/vendors/font-awesome/css/font-awesome.min.css")}}"" />
+    
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset("/assets/css/demo_2/style.css")}}" />
+    <link rel="stylesheet" href="{{asset("/assets/vendors/datatables/datatables.min.css")}}" />
+    <link rel="stylesheet" href="{{asset("/assets/vendors/select2/css/select2.min.css")}}" />
+    <link rel="stylesheet" href="{{asset("/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css")}}" />
+    <link rel="stylesheet" href="{{asset("/assets/vendors/bootstrap-datepicker/css/bootstrap-datepicker.min.css")}}" />
+    <link rel="stylesheet" href="{{asset("/assets/css/bootstrap-datetimepicker.css")}}" />
+    <link rel="stylesheet" href="{{asset("/assets/css/custom.css")}}" />
+   
+   
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset("/assets/images/favicon.png")}}" />
     @yield('style')
@@ -26,54 +36,7 @@
     <div class="container-scroller">
       <!-- partial:partials/_horizontal-navbar.html -->
       <div class="horizontal-menu">
-        <nav class="navbar top-navbar col-lg-12 col-12 p-0">
-          <div class="container">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo" href="index.html">
-                <img src="{{asset("/assets/images/logo.svg")}}" alt="logo" />
-                <span class="font-12 d-block font-weight-light">Responsive Dashboard </span>
-              </a>
-              <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset("/assets/images/logo-mini.svg")}}" alt="logo" /></a>
-            </div>
-            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-              <ul class="navbar-nav mr-lg-2">
-                <li class="nav-item nav-search d-none d-lg-block">
-                  <div class="input-group">
-                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                      <span class="input-group-text" id="search">
-                        <i class="mdi mdi-magnify"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search" aria-label="search" aria-describedby="search" />
-                  </div>
-                </li>
-              </ul>
-              <ul class="navbar-nav navbar-nav-right">
-                <li class="nav-item nav-profile dropdown">
-                  <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                    <div class="nav-profile-img">
-                      <img src="{{asset("/assets/images/faces/face1.jpg")}}" alt="image" />
-                    </div>
-                    <div class="nav-profile-text">
-                      <p class="text-black font-weight-semibold m-0"> Olson jass </p>
-                      <span class="font-13 online-color">online <i class="mdi mdi-chevron-down"></i></span>
-                    </div>
-                  </a>
-                  <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">
-                      <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
-                  </div>
-                </li>
-              </ul>
-              <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
-                <span class="mdi mdi-menu"></span>
-              </button>
-            </div>
-          </div>
-        </nav>
+      
         <nav class="bottom-navbar">
           <div class="container">
             <ul class="nav page-navigation">
@@ -104,15 +67,15 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pages/forms/basic_elements.html">
+                <a class="nav-link" href="{{url("plans")}}">
                   <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">Forms</span>
+                  <span class="menu-title">Plans</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pages/icons/mdi.html">
+                <a class="nav-link" href="{{url("role")}}">
                   <i class="mdi mdi-contacts menu-icon"></i>
-                  <span class="menu-title">Icons</span>
+                  <span class="menu-title">Role</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -162,6 +125,7 @@
       <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
           <div class="content-wrapper pb-0">
+            <div id="mainAlert" class="col-12"></div> 
             @yield('content')
           </div>
           <!-- content-wrapper ends -->
@@ -169,8 +133,6 @@
           <footer class="footer">
             <div class="container">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
               </div>
             </div>
           </footer>
@@ -192,6 +154,14 @@
     <script src="{{asset("/assets/vendors/flot/jquery.flot.categories.js")}}"></script>
     <script src="{{asset("/assets/vendors/flot/jquery.flot.fillbetween.js")}}"></script>
     <script src="{{asset("/assets/vendors/flot/jquery.flot.stack.js")}}"></script>
+    <script src="{{asset("/assets/vendors/datatables/datatables.min.js")}}"></script>
+    <script src="{{asset("/assets/vendors/select2/js/select2.full.min.js")}}"></script>
+    <script src="{{asset("/assets/vendors/moment/moment.js")}}"></script>
+    <script src="{{asset("/assets/vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js")}}"></script>
+    <script src="{{asset("/assets/js/bootstrap-datetimepicker.js")}}"></script>
+    <script src="{{asset("/assets/vendors/inputmask/jquery.inputmask.bundle.min.js")}}"></script>
+    <script src="{{asset("/assets/js/sweetalert2.all.min.js")}}"></script>
+    <script src="{{asset("/assets/js/jquery.blockUI.js")}}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="{{asset("/assets/js/off-canvas.js")}}"></script>
@@ -199,11 +169,15 @@
     <script src="{{asset("/assets/js/misc.js")}}"></script>
     <script src="{{asset("/assets/js/settings.js")}}"></script>
     <script src="{{asset("/assets/js/todolist.js")}}"></script>
+    <script src="{{asset("/assets/js/file-upload.js")}}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{asset("/assets/js/dashboard.js")}}"></script>
+    
+    <script src="{{asset("/assets/js/select2.js")}}"></script>
+    <script src="{{asset("/assets/scripts.js")}}"></script>
     <!-- End custom js for this page -->
 
-    @yield('scipt')
+    @yield('scripts')
   </body>
 </html>

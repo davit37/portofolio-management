@@ -1,0 +1,145 @@
+
+
+
+@media (min-width: 768px){
+    .container-scroller {
+        .content-wrapper {
+            max-width: 900px;
+        }
+    }
+}
+
+
+@media (min-width: 992px){
+    .container-scroller {
+        .content-wrapper {
+            max-width: 1040px;
+        }
+    }
+}
+
+@media (min-width: 1200px){
+    .container-scroller {
+        .content-wrapper {
+            max-width: 1340px;
+        }
+    }
+}
+
+.datepicker-dropdown {
+    font-family: sans-serif;
+    padding: 10px !important;
+    z-index: 10000 !important;
+    font-size:12.5px;
+
+    td{
+        padding-top:7px;
+        padding-bottom: 7px;
+    }
+    
+}
+
+.datepicker table tr td.today, .datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:hover, .datepicker table tr td.today:hover{
+
+    background-color:#7da0f457;
+    background-image:unset;
+    background-image:unset;
+    background-image:unset  ;
+    background-image:unset  ;
+    background-image:unset  ;
+    background-image:unset  ;
+    background-repeat:unset  ;
+    filter:unset  ;
+    border-color: unset  ;
+    border-color:unset  ;
+    filter: unset  ;
+}
+
+.datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled.active, .datepicker table tr td.today.disabled.disabled, .datepicker table tr td.today.disabled:active, .datepicker table tr td.today.disabled:hover, .datepicker table tr td.today.disabled:hover.active, .datepicker table tr td.today.disabled:hover.disabled, .datepicker table tr td.today.disabled:hover:active, .datepicker table tr td.today.disabled:hover:hover, .datepicker table tr td.today.disabled:hover[disabled], .datepicker table tr td.today.disabled[disabled], .datepicker table tr td.today:active, .datepicker table tr td.today:hover, .datepicker table tr td.today:hover.active, .datepicker table tr td.today:hover.disabled, .datepicker table tr td.today:hover:active, .datepicker table tr td.today:hover:hover, .datepicker table tr td.today:hover[disabled], .datepicker table tr td.today[disabled] {
+    background-color: #d5d8fe;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active:hover {
+    background-color: #006dcc;
+    background-image:unset;
+   
+    filter: unset;
+    /* border-color: #04c #04c #002a80; */
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    color: #fff;
+    /* text-shadow: 0 -1px 0 rgba(0,0,0,.25); */
+}
+
+.images-list{
+    width: 82px;
+    height: 82px;
+    display: inline-block;
+    border: 1px solid #e4e9f0;
+    img{
+        max-width: 100%;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.form-control{
+    &.form-no-border{
+        border-top: unset;
+        border-left: unset;
+        border-right:unset;
+        padding:0;
+        padding-left:5px;
+        border-bottom-color: #8c8ba6ba;
+        border-radius: unset;
+        // height: 0;
+    }
+}
+
+.table{
+    &.border-less{
+        thead {
+            th{
+                border-bottom:unset;
+            }
+        }
+
+        td{
+            border-top: unset;
+            padding-top: unset;
+            padding-right: 5px;
+            padding-bottom: unset;
+            vertical-align: bottom;
+        }
+       
+    }
+}
+
+.select2-selection.select2-selection--single.custom-material-select, .select2-selection.select2-selection--multiple.custom-material-select{
+	border-radius: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: solid 1px #979797;
+
+
+}
+
+.select2-container--bootstrap .select2-selection--single {
+    height: unset;
+}
+
+.select2-dropdown.custom-material-select.select2-dropdown--below {
+	-webkit-box-shadow: 0 3px 4px rgba(0,0,0,.175);
+	box-shadow: 0 3px 4px rgba(0,0,0,.175);
+	border-color: #fff;
+	border-top: 1.5px solid #091970;
+}
+
+.select2-dropdown.custom-material-select.select2-dropdown--above {
+	-webkit-box-shadow: 0 3px 4px rgba(0,0,0,.175);
+	box-shadow: 0 3px 4px rgba(0,0,0,.175);
+	border-color: #fff;
+	border-bottom: 1.5px solid #091970;
+}
